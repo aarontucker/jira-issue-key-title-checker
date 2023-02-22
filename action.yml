@@ -1,0 +1,12 @@
+name: "Jira Issue Title Key Checker"
+description: "Github action to check for Jira issue key in a pull request title."
+on: [pull_request]
+inputs:
+  GITHUB_TOKEN:
+    required: true
+  jira-prefixes:
+    required: true
+    description: "Comma separated list of Jira issue key prefixes."
+runs:
+  using: "node12"
+  main: "index.js"
