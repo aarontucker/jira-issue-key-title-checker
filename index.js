@@ -6,12 +6,12 @@ const jiraPrefixes = core.getInput("jira-prefixes");
 async function run() {
     try {
         const prTitle = github.context.payload.pull_request.title;
-        const prefixesArray = jiraPrefixes.split(',').trim();
-        let keyFound = false
+        const prefixesArray = jiraPrefixes.split(',');
+        let keyFound = false;
         prefixesArray.forEach(prefix => {
-            let regex = new RegExp(`${prefix}-[0-9]+`);
+            let regex = new RegExp(`${prefix.trim()}-[0-9]+`);
             if (regex.test(prTitle)) {
-                keyFound = true
+                keyFound = true;
             }
         })
 
